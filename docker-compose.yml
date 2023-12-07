@@ -1,0 +1,51 @@
+version: "3.8"
+services:
+  go-f-dev:
+    container_name: go-f-dev
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    stdin_open: true
+    volumes:
+      - ./backend:/go/src/github.com/go-f-dev
+    tty: true
+    env_file:
+      - ./backend/.go_env
+    environment:
+      - TZ=Asia/Tokyo
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+
+  react-dev:
+    container_name: react-dev
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/app
+    tty: true
+    ports:
+      - "3000:3000" # コンテナの3000番ポートをホストの3000番ポートにマッピング
+
+  mysql:
+    container_name: mysql-dev
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    tty: true
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: first-db
+      MYSQL_USER: username
+      MYSQL_PASSWORD: password
+      TZ: "Asia/Tokyo"
+    ports:
+      - 3306:3306
+    volumes:
+      - type: volume
+        source: mysql_data
+        target: /var/lib/mysql
+volumes:
+  mysql_data:

@@ -1,0 +1,86 @@
+/* アプリタイトル
+  ==================*/
+.checker-ttl {
+  display: flex;
+  align-items: center;
+}
+.checker-ico {
+  padding: 0 25px;
+}
+
+.top-contents {
+  margin: 10px 30px;
+}
+.top-prefecture-inner {
+  /* width: 100%;
+  margin: auto;
+  max-width: 1280px; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* これによりアイテムが中央に配置されます */
+  align-items: center; /* 垂直方向の中央寄せを行う場合に使用します */
+  gap: 10px; /* アイテム間の間隔を設定 */
+  margin: 0 auto; /* 左右のマージンを自動で調整し、中央寄せを強化します */
+  max-width: 1280px; /* 最大幅を設定 */
+  padding: 0 40px; /* 内側のパディングを設定 */
+}
+.prefecture-title {
+  padding: 0 1rem;
+}
+.prefectures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* 都道府県の選択ゾーン
+    ==================*/
+.prefecture-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* カードを左端から並べる */
+  gap: 10px; /* カード間の余白 */
+  margin: 0 auto; /* 中央寄せ */
+  max-width: 100%; /* 最大幅を画面幅に制限 */
+  padding: 0 40px; /* カードの外側の余白 */
+}
+
+.prefecture-card {
+  flex: 0 0 auto; /* カードが縮小しないように設定 */
+  /* width: calc(9% - 10px); 画面幅の25%から余白を引いた幅 */
+  width: 100px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 4px;
+}
+.prefecture-card input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+  .prefecture-card {
+    width: calc(50% - 10px); /* 画面幅が768px以下の場合は2列で表示 */
+  }
+}
+
+@media (max-width: 480px) {
+  .prefecture-card {
+    width: calc(100% - 10px); /* 画面幅が480px以下の場合は1列で表示 */
+  }
+}
+
+/* グラフゾーン
+    ==================*/
+
+.graph-contents {
+  margin: 20px auto;
+  max-width: 1280px;
+  width: 100%;
+}
+
+.graph-data__title {
+  padding-top: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
